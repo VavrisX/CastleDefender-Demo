@@ -206,7 +206,7 @@ if(arrowY<250){
  //renders all graphic content
  function render() {
      if(pause==false){
- gc.drawImage(background,0,0); 
+ gc.drawImage(background,-50,-50); 
  gc.drawImage(castle,800,castleY);
  gc.font="20px Georgia";
  gc.fillText("Castle durability:" + castleLife,950,50);
