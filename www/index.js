@@ -8,7 +8,7 @@ var pause = false;
 var speed=Math.floor((Math.random()*6)+2); //speed of the units, different each playthrough
 
 //stage 1 variables
-var fighterYloc= 1019;
+var fighterYloc= 899;
 var fighterLoc=-300;
 var fighterLoc1=-450;
 var fighterLoc2=-400;
