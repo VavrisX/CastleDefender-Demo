@@ -1,3 +1,3 @@
-phonegap-lifecycle-test
+Game by 16011346
 =======================
- A simple PhoneGap Build application that counts the occurances of application lifecycle events 
+Tower defense game! 
