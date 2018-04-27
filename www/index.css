@@ -1,6 +1,11 @@
 body{
 font-family: 'Timmana', sans-serif;
 color:white; font-size: 32px;
-zoom:100% ;
+zoom:100% 
+}
 
+#all{
+    margin-left:auto;
+    margin-right:auto;
+    width: 100%
 }
