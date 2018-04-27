@@ -16,7 +16,7 @@
     <author>
         16011346
     </author>
-    <uses-sdk android:minSdkVersion="7" />  
+   
 	<preference name="orientation" value="landscape" />
 	<plugin name="cordova-plugin-device-motion" />
      
