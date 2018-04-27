@@ -16,8 +16,9 @@
     <author>
         16011346
     </author>
-	
-	<plugin name="cordova-plugin-device-motion" />
         
+	<preference name="orientation" value="landscape" />
+	<plugin name="cordova-plugin-device-motion" />
+     
 
 </widget>
