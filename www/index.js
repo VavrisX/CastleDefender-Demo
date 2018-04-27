@@ -8,6 +8,7 @@ var pause = false;
 var speed=Math.floor((Math.random()*6)+2); //speed of the units, different each playthrough
 
 //stage 1 variables
+var fighterYloc= 1019;
 var fighterLoc=-300;
 var fighterLoc1=-450;
 var fighterLoc2=-400;
@@ -242,59 +243,59 @@ function(isConfirm){
  cFrame=(cFrame+1)%tFrame; //loops the frames of the fighters
  //STAGE 1   
  if(stage1==true){if(fighterLife==true){
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc, fighterYloc,
  frameWidth, frameHeight);
  }
   if(fighterLife1==true){              
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc1, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc1, fighterYloc,
  frameWidth, frameHeight);  
   }
   if(fighterLife2==true){              
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc2, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc2, fighterYloc,
  frameWidth, frameHeight);
   }
   if(fighterLife3==true){    
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc3, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc3, fighterYloc,
  frameWidth, frameHeight);
   }
   if(fighterLife4==true){  
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc4, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc4, fighterYloc,
  frameWidth, frameHeight);    
  }
  
  
    if (arrowX < fighterLoc + frameWidth && // COLISION0
     arrowX +arrow.width > fighterLoc &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife=false;
      deathCount=deathCount+1;
     } 
    if (arrowX < fighterLoc1 + frameWidth && // COLISION1
     arrowX +arrow.width > fighterLoc1 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife1=false;
       deathCount=deathCount+1;  
     }
     if (arrowX < fighterLoc2 + frameWidth && // COLISION2
     arrowX +arrow.width > fighterLoc2 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife2=false;
       deathCount=deathCount+1;   
     } 
     if (arrowX < fighterLoc3 + frameWidth && // COLISION3
     arrowX +arrow.width > fighterLoc3 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife3=false;
       deathCount=deathCount+1;   
     }  
      if (arrowX < fighterLoc4 + frameWidth && // COLISION4
     arrowX +arrow.width > fighterLoc4 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife4=false;
      deathCount=deathCount+1;     
     } 
@@ -349,168 +350,168 @@ function(isConfirm){
 });}   
   
   if(stage2==true){if(fighterLife5==true){
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc5, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc5, fighterYloc,
  frameWidth, frameHeight);
  }
   if(fighterLife6==true){              
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc6, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc6, fighterYloc,
  frameWidth, frameHeight);  
   }
   if(fighterLife7==true){              
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc7, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc7, fighterYloc,
  frameWidth, frameHeight);
   }
   if(fighterLife8==true){    
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc8, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc8, fighterYloc,
  frameWidth, frameHeight);
   }
   if(fighterLife9==true){  
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc9, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc9, fighterYloc,
  frameWidth, frameHeight);    
  }
   if(fighterLife10==true){
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc10, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc10, fighterYloc,
  frameWidth, frameHeight);
  }
   if(fighterLife11==true){              
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc11, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc11, fighterYloc,
  frameWidth, frameHeight);  
   }
   if(fighterLife12==true){              
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc12, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc12, fighterYloc,
  frameWidth, frameHeight);
   }
   if(fighterLife13==true){    
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc13, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc13, fighterYloc,
  frameWidth, frameHeight);
   }
   if(fighterLife14==true){  
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc14, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc14, fighterYloc,
  frameWidth, frameHeight);    
  }                 
  if(fighterLife15==true){
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc15, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc15, fighterYloc,
  frameWidth, frameHeight);
  }
   if(fighterLife16==true){              
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc16, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc16, fighterYloc,
  frameWidth, frameHeight);  
   }
   if(fighterLife17==true){              
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc17, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc17, fighterYloc,
  frameWidth, frameHeight);
   }
   if(fighterLife18==true){    
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc18, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc18, fighterYloc,
  frameWidth, frameHeight);
   }
   if(fighterLife19==true){  
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc19, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc19, fighterYloc,
  frameWidth, frameHeight);    
  }
                    
    if (arrowX < fighterLoc5 + frameWidth && // COLISION5
     arrowX +arrow.width > fighterLoc5 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife5=false;
      deathCount=deathCount+1;
     } 
    if (arrowX < fighterLoc6 + frameWidth && // COLISION6
     arrowX +arrow.width > fighterLoc6 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife6=false;
       deathCount=deathCount+1;  
     }
     if (arrowX < fighterLoc7 + frameWidth && // COLISION7
     arrowX +arrow.width > fighterLoc7 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife7=false;
       deathCount=deathCount+1;   
     } 
     if (arrowX < fighterLoc8 + frameWidth && // COLISION8
     arrowX +arrow.width > fighterLoc8 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife8=false;
       deathCount=deathCount+1;   
     }  
      if (arrowX < fighterLoc9 + frameWidth && // COLISION9
     arrowX +arrow.width > fighterLoc9 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife9=false;
      deathCount=deathCount+1;     
     }
        if (arrowX < fighterLoc10 + frameWidth && // COLISION10
     arrowX +arrow.width > fighterLoc10 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife10=false;
      deathCount=deathCount+1;
     } 
    if (arrowX < fighterLoc11 + frameWidth && // COLISION11
     arrowX +arrow.width > fighterLoc11 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife11=false;
       deathCount=deathCount+1;  
     }
     if (arrowX < fighterLoc12 + frameWidth && // COLISION12
     arrowX +arrow.width > fighterLoc12 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife12=false;
       deathCount=deathCount+1;   
     } 
     if (arrowX < fighterLoc13 + frameWidth && // COLISION13
     arrowX +arrow.width > fighterLoc13 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife13=false;
       deathCount=deathCount+1;   
     }  
      if (arrowX < fighterLoc14 + frameWidth && // COLISION14
     arrowX +arrow.width > fighterLoc14 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife14=false;
      deathCount=deathCount+1;     
     }
        if (arrowX < fighterLoc15 + frameWidth && // COLISION15
     arrowX +arrow.width > fighterLoc15 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife15=false;
      deathCount=deathCount+1;     
     }              
        if (arrowX < fighterLoc16 + frameWidth && // COLISION16
     arrowX +arrow.width > fighterLoc16 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife16=false;
      deathCount=deathCount+1;
     } 
    if (arrowX < fighterLoc17 + frameWidth && // COLISION17
     arrowX +arrow.width > fighterLoc17 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife17=false;
       deathCount=deathCount+1;  
     }
     if (arrowX < fighterLoc18 + frameWidth && // COLISION18
     arrowX +arrow.width > fighterLoc18 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife18=false;
       deathCount=deathCount+1;   
     } 
     if (arrowX < fighterLoc19 + frameWidth && // COLISION19
     arrowX +arrow.width > fighterLoc19 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife19=false;
       deathCount=deathCount+1;   
     }  
@@ -623,333 +624,333 @@ function(isConfirm){
      
 if(stage3==true){ if(fighterLife20==true){
     //draws fighters on stage 3
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc20, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc20, fighterYloc,
  frameWidth, frameHeight);
  }
   if(fighterLife21==true){              
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc21, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc21, fighterYloc,
  frameWidth, frameHeight);  
   }
   if(fighterLife22==true){              
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc22, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc22, fighterYloc,
  frameWidth, frameHeight);
   }
   if(fighterLife23==true){    
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc23, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc23, fighterYloc,
  frameWidth, frameHeight);
   }
   if(fighterLife24==true){  
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc24, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc24, fighterYloc,
  frameWidth, frameHeight);    
  }
   if(fighterLife25==true){
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc25, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc25, fighterYloc,
  frameWidth, frameHeight);
  }
   if(fighterLife26==true){              
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc26, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc26, fighterYloc,
  frameWidth, frameHeight);  
   }
   if(fighterLife27==true){              
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc27, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc27, fighterYloc,
  frameWidth, frameHeight);
   }
   if(fighterLife28==true){    
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc28, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc28, fighterYloc,
  frameWidth, frameHeight);
   }
   if(fighterLife29==true){  
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc29, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc29, fighterYloc,
  frameWidth, frameHeight);    
  }                 
  if(fighterLife30==true){
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc30, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc30, fighterYloc,
  frameWidth, frameHeight);
  }
   if(fighterLife31==true){              
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc31, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc31, fighterYloc,
  frameWidth, frameHeight);  
   }
   if(fighterLife32==true){              
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc32, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc32, fighterYloc,
  frameWidth, frameHeight);
   }
   if(fighterLife33==true){    
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc33, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc33, fighterYloc,
  frameWidth, frameHeight);
   }
   if(fighterLife34==true){  
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc34, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc34, fighterYloc,
  frameWidth, frameHeight);    
  }
   if(fighterLife35==true){
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc35, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc35, fighterYloc,
  frameWidth, frameHeight);
  }
   if(fighterLife36==true){              
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc36, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc36, fighterYloc,
  frameWidth, frameHeight);  
   }
   if(fighterLife37==true){              
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc37, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc37, fighterYloc,
  frameWidth, frameHeight);
   }
   if(fighterLife38==true){    
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc38, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc38, fighterYloc,
  frameWidth, frameHeight);
   }
   if(fighterLife39==true){  
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc39, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc39, fighterYloc,
  frameWidth, frameHeight);    
  }
   if(fighterLife40==true){
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc40, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc40, fighterYloc,
  frameWidth, frameHeight);
  }
   if(fighterLife41==true){              
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc41, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc41, fighterYloc,
  frameWidth, frameHeight);  
   }
   if(fighterLife42==true){              
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc42, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc42, fighterYloc,
  frameWidth, frameHeight);
   }
   if(fighterLife43==true){    
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc43, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc43, fighterYloc,
  frameWidth, frameHeight);
   }
   if(fighterLife44==true){  
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc44, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc44, fighterYloc,
  frameWidth, frameHeight);    
  }                 
  if(fighterLife45==true){
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc45, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc45, fighterYloc,
  frameWidth, frameHeight);
  }
   if(fighterLife46==true){              
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc46, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc46, fighterYloc,
  frameWidth, frameHeight);  
   }
   if(fighterLife47==true){              
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc47, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc47, fighterYloc,
  frameWidth, frameHeight);
   }
   if(fighterLife48==true){    
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc48, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc48, fighterYloc,
  frameWidth, frameHeight);
   }
   if(fighterLife49==true){  
- gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc49, 439,
+ gc.drawImage(mySprite, cFrame * frameWidth, 0, frameWidth,frameHeight, fighterLoc49, fighterYloc,
  frameWidth, frameHeight);    
  }   
      
  if (arrowX < fighterLoc20 + frameWidth && // COLISION20
     arrowX +arrow.width > fighterLoc20 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife20=false;
      deathCount=deathCount+1;
     } 
    if (arrowX < fighterLoc21 + frameWidth && // COLISION21
     arrowX +arrow.width > fighterLoc21 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife21=false;
       deathCount=deathCount+1;  
     }
     if (arrowX < fighterLoc22 + frameWidth && // COLISION22
     arrowX +arrow.width > fighterLoc22 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife22=false;
       deathCount=deathCount+1;   
     } 
     if (arrowX < fighterLoc23 + frameWidth && // COLISION23
     arrowX +arrow.width > fighterLoc23 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife23=false;
       deathCount=deathCount+1;   
     }  
      if (arrowX < fighterLoc24 + frameWidth && // COLISION24
     arrowX +arrow.width > fighterLoc24 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife24=false;
      deathCount=deathCount+1;     
     }
        if (arrowX < fighterLoc25 + frameWidth && // COLISION25
     arrowX +arrow.width > fighterLoc25 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife25=false
      deathCount=deathCount+1;
     } 
    if (arrowX < fighterLoc26 + frameWidth && // COLISION26
     arrowX +arrow.width > fighterLoc26 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife26=false;
       deathCount=deathCount+1;  
     }
     if (arrowX < fighterLoc27 + frameWidth && // COLISION27
     arrowX +arrow.width > fighterLoc27 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife27=false;
       deathCount=deathCount+1;   
     } 
     if (arrowX < fighterLoc28 + frameWidth && // COLISION28
     arrowX +arrow.width > fighterLoc28 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife28=false;
       deathCount=deathCount+1;   
     }  
      if (arrowX < fighterLoc29 + frameWidth && // COLISION29
     arrowX +arrow.width > fighterLoc29 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife29=false;
      deathCount=deathCount+1;     
     }
        if (arrowX < fighterLoc30 + frameWidth && // COLISION30
     arrowX +arrow.width > fighterLoc30 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife30=false;
      deathCount=deathCount+1;     
     }              
        if (arrowX < fighterLoc31 + frameWidth && // COLISION31
     arrowX +arrow.width > fighterLoc31 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife31=false;
      deathCount=deathCount+1;
     } 
    if (arrowX < fighterLoc32 + frameWidth && // COLISION32
     arrowX +arrow.width > fighterLoc32 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife32=false;
       deathCount=deathCount+1;  
     }
     if (arrowX < fighterLoc33 + frameWidth && // COLISION33
     arrowX +arrow.width > fighterLoc33 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife33=false;
       deathCount=deathCount+1;   
     } 
     if (arrowX < fighterLoc34 + frameWidth && // COLISION34
     arrowX +arrow.width > fighterLoc34 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife34=false;
       deathCount=deathCount+1;   
     }      
     if (arrowX < fighterLoc35 + frameWidth && // COLISION35
     arrowX +arrow.width > fighterLoc35 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife35=false;
      deathCount=deathCount+1;
     } 
    if (arrowX < fighterLoc36 + frameWidth && // COLISION36
     arrowX +arrow.width > fighterLoc36 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife36=false;
       deathCount=deathCount+1;  
     }
     if (arrowX < fighterLoc37 + frameWidth && // COLISION37
     arrowX +arrow.width > fighterLoc37 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife37=false;
       deathCount=deathCount+1;   
     } 
     if (arrowX < fighterLoc38 + frameWidth && // COLISION38
     arrowX +arrow.width > fighterLoc38 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife38=false;
       deathCount=deathCount+1;   
     }  
      if (arrowX < fighterLoc39 + frameWidth && // COLISION39
     arrowX +arrow.width > fighterLoc39 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife39=false;
      deathCount=deathCount+1;     
     }
        if (arrowX < fighterLoc40 + frameWidth && // COLISION40
     arrowX +arrow.width > fighterLoc40 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife40=false;
      deathCount=deathCount+1;
     } 
    if (arrowX < fighterLoc41 + frameWidth && // COLISION41
     arrowX +arrow.width > fighterLoc41 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife41=false;
       deathCount=deathCount+1;  
     }
     if (arrowX < fighterLoc42 + frameWidth && // COLISION42
     arrowX +arrow.width > fighterLoc42 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife42=false;
       deathCount=deathCount+1;   
     } 
     if (arrowX < fighterLoc43 + frameWidth && // COLISION43
     arrowX +arrow.width > fighterLoc43 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife43=false;
       deathCount=deathCount+1;   
     }  
      if (arrowX < fighterLoc44 + frameWidth && // COLISION44
     arrowX +arrow.width > fighterLoc44 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife44=false;
      deathCount=deathCount+1;     
     }
        if (arrowX < fighterLoc45 + frameWidth && // COLISION45
     arrowX +arrow.width > fighterLoc45 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife45=false;
      deathCount=deathCount+1;     
     }              
        if (arrowX < fighterLoc46 + frameWidth && // COLISION46
     arrowX +arrow.width > fighterLoc46 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife46=false;
      deathCount=deathCount+1;
     } 
    if (arrowX < fighterLoc47 + frameWidth && // COLISION47
     arrowX +arrow.width > fighterLoc47 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife47=false;
       deathCount=deathCount+1;  
     }
     if (arrowX < fighterLoc48 + frameWidth && // COLISION48
     arrowX +arrow.width > fighterLoc48 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife48=false;
       deathCount=deathCount+1;   
     } 
     if (arrowX < fighterLoc49 + frameWidth && // COLISION49
     arrowX +arrow.width > fighterLoc49 &&
-     arrowY < 439+frameHeight &&
-     arrow.height + arrowY > 439) {
+     arrowY < fighterYloc+frameHeight &&
+     arrow.height + arrowY > fighterYloc) {
      fighterLife49=false;
       deathCount=deathCount+1;   
     }
