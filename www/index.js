@@ -8,7 +8,7 @@ var pause = false;
 var speed=Math.floor((Math.random()*6)+2); //speed of the units, different each playthrough
 
 //stage 1 variables
-var fighterYloc= 899;
+var fighterYloc= 1016;
 var fighterLoc=-300;
 var fighterLoc1=-450;
 var fighterLoc2=-400;
@@ -206,7 +206,7 @@ if(arrowY<250){
  //renders all graphic content
  function render() {
      if(pause==false){
- gc.drawImage(background,-50,-50); 
+ gc.drawImage(background,0,0); 
  gc.drawImage(castle,800,castleY);
  gc.font="20px Georgia";
  gc.fillText("Castle durability:" + castleLife,950,50);
