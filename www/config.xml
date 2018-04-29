@@ -7,7 +7,7 @@
 
     <!-- versionCode is optional and Android only -->
 
-    <name>game</name>
+    <name>CastleDefender</name>
 
     <description>
         gamee
@@ -18,7 +18,7 @@
     </author>
    
 	<preference name="orientation" value="landscape" />
-        
+        <icon src="logo.png" />
         <preference name="android-targetSdkVersion" value="7" />
         <preference name="android-minSdkVersion" value="3" />
         <preference name="DisallowOverscroll" value="true" />
