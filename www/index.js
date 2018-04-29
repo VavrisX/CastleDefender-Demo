@@ -28,7 +28,7 @@ var ufoWidth = 150;
 var stage2alert=true;
 var stage3alert=false;
 var stage4alert=false;
-var win = false;
+var arrows;
 //other variables
 var castleLife=1000;
 var arrowX=-300;
@@ -95,19 +95,23 @@ function keyUpHandler(e) {
 
   function mouseClickHandler(event){
         if(event.target.tagName.localeCompare("canvas") && event.button==0){
+            if(arrows !== 0){
            arrowCount=arrowCount+1;
-         arrowX=event.clientX;
-          arrowY=-50;
-           arrowArray.push({file: arrow, x: arrowX,y: arrowY }); 
+           arrowX=event.clientX;
+           arrowY=-50;
+           arrowArray.push({file: arrow, x: arrowX,y: arrowY });
+           arrows=arrows-0.5;     
         }   
   }
-
+  }
 function populateS1(){
+    arrows=10.5;
     for (var i=0; i<5; i++ ) {
         fighterArray.push({file: mySprite, frame: totalFrame, zero: 0, frameW: frameWidth, frameH: frameHeight, locationX: fighterLoc0-=50, locationY: fighterYloc, frameW2: frameWidth, frameH2: frameHeight, life: true, speed: speed });
 }}
 
 function populateS2(){
+    arrows+=35;
     fighterArray=[];
     fighterLoc0=-400;
     for (var i=0; i<20; i++ ) {
@@ -115,6 +119,7 @@ function populateS2(){
 }}
 
 function populateS3(){
+    arrows=+50;
     fighterArray=[];
     fighterLoc0=-400;
     for (var i=0; i<40; i++ ) {
@@ -122,6 +127,7 @@ function populateS3(){
 }}
 
 function populateS4(){
+    arrows+=50;
     fighterArray=[];
     fighterLoc0=-400;
     for (var i=0; i<40; i++ ) {
@@ -162,9 +168,10 @@ if(arrowY<1080 && arrowArray[i].y <1080)  {
      if(pause==false){
  gc.drawImage(background,0,0); 
  gc.drawImage(castle,800,castleY);
- gc.font="20px Georgia";
- gc.fillText("Castle durability:" + castleLife,950,50);
- gc.fillText("Score:" + deathCount,950,100);
+ gc.font="50px Georgia";
+ gc.fillText("Castle durability: " + castleLife,950,50);
+ gc.fillText("Score: " + deathCount,950,100);
+ gc.fillText("Arrows left: " + arrows,950,150);
   gc.drawImage(arrow, arrowX, arrowY);
      
  if(castleLife<=0){   //if the castle is destoyed, player loses the game
