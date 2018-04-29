@@ -100,7 +100,7 @@ function keyUpHandler(e) {
            arrowX=event.clientX;
            arrowY=-50;
            arrowArray.push({file: arrow, x: arrowX,y: arrowY });
-           arrows=arrows-0.5;     
+           arrows=arrows-0.5;
         }   
   }
   }
@@ -111,7 +111,7 @@ function populateS1(){
 }}
 
 function populateS2(){
-    arrows+=35;
+    arrows+=35.5;
     fighterArray=[];
     fighterLoc0=-400;
     for (var i=0; i<20; i++ ) {
@@ -119,7 +119,7 @@ function populateS2(){
 }}
 
 function populateS3(){
-    arrows=+50;
+    arrows=+50.5;
     fighterArray=[];
     fighterLoc0=-400;
     for (var i=0; i<40; i++ ) {
@@ -127,7 +127,7 @@ function populateS3(){
 }}
 
 function populateS4(){
-    arrows+=50;
+    arrows+=50.5;
     fighterArray=[];
     fighterLoc0=-400;
     for (var i=0; i<40; i++ ) {
@@ -219,10 +219,8 @@ function(isConfirm){
      }
  } 
          
-
  cFrame=(cFrame+1)%tFrame; //loops the frames of the fighters
-// totalFrame = cFrame * frameWidth;
-//STAGE 1   
+//STAGE 1  //////////////////////////////////////////////////////////////////// 
 if(stage1==true){
                         
     for (var i=0; i<fighterArray.length; i++ ) {
@@ -236,6 +234,7 @@ if(fighterArray[i].locationX<=1000 && fighterArray[i].life==true){
 }
 if(fighterArray[i].locationX>=1000 && fighterArray[i].life==true){    
    castleLife-=2;
+   navigator.vibrate(500);
 }
 }
 

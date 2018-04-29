@@ -25,7 +25,8 @@
       <preference name="EnableViewportScale" value="true" /> 
         <preference name="UIWebViewBounce" value="false" />
         <preference name="Fullscreen" value="true" />
-	<plugin name="cordova-plugin-device-motion" />
+
+    <plugin name="cordova-plugin-vibration"/>
      
 
 </widget>
