@@ -14,6 +14,7 @@ var canvas;
 var totalFrame;
 var deathCheck;
 var deathCheck1;
+var pauseSwitch;
 
 //stage 1 variables
 var fighterYloc= 1016;
@@ -49,18 +50,21 @@ var castleY=675;
 //Event listeners
  document.addEventListener("click",mouseClickHandler,false);
  document.addEventListener("keydown", keyDownHandler, false);  
+ document.addEventListener("click",pause2,false); 
  document.addEventListener("keyup", keyUpHandler, false);    
  window.setInterval(render,35);
  window.setInterval(arrowDownRender,16);
-
-     
+  
  //Loading images
  background=document.getElementById("background");    
  castle = document.getElementById("castle");
  mySprite = document.getElementById("fighter");
  arrow = document.getElementById("arrow");
  ufo = document.getElementById("ufo");
-  
+ pauseI = document.getElementById("pause");
+ pauseSwitch = pauseI;
+ playI = document.getElementById("play");
+ exit = document.getElementById("exit");
  swal({   //Sweet alert JS library
   title: "Welcome to Castle Fight Defense!",
   text: ("Tap the screen to shoot enemies with arrows!"),
@@ -87,6 +91,35 @@ function(isConfirm){
  }
 }
 
+function pause2(event){
+
+    event.preventDefault();
+    var checkXpos = event.clientX;
+    var checkYpos = event.clientY;
+
+    if(checkXpos>1700 && checkXpos<1870 && checkYpos>50 && checkYpos<220){ //780 = 580+(200) <- image width 1700, 50
+           if (pauseCheck>0) {
+            pause = true;
+            pauseCheck=pauseCheck*-1;
+            pauseSwitch = playI;
+            arrows+=1;
+        //Using *-1 to get the double negative into positive and vice versa
+            }
+            else if(pauseCheck<0) {
+            pause = false;
+            pauseCheck=pauseCheck*-1;
+            pauseSwitch = pauseI;
+            arrows+=1;
+ }
+}
+    if(checkXpos>30 && checkXpos<200 && checkYpos>55 && checkYpos<155){
+        window.location.href = "index.html";
+        
+}    
+}
+
+
+
 function keyUpHandler(e) {
  if(e.keyCode == 78) {
  location.reload();
@@ -100,18 +133,18 @@ function keyUpHandler(e) {
            arrowX=event.clientX;
            arrowY=-50;
            arrowArray.push({file: arrow, x: arrowX,y: arrowY });
-           arrows=arrows-0.5;
+           arrows=arrows-1;
         }   
-  }
+  }  
   }
 function populateS1(){
-    arrows=10.5;
+    arrows=10;
     for (var i=0; i<5; i++ ) {
         fighterArray.push({file: mySprite, frame: totalFrame, zero: 0, frameW: frameWidth, frameH: frameHeight, locationX: fighterLoc0-=50, locationY: fighterYloc, frameW2: frameWidth, frameH2: frameHeight, life: true, speed: speed });
 }}
 
 function populateS2(){
-    arrows+=35.5;
+    arrows+=35;
     fighterArray=[];
     fighterLoc0=-400;
     for (var i=0; i<20; i++ ) {
@@ -119,7 +152,7 @@ function populateS2(){
 }}
 
 function populateS3(){
-    arrows=+50.5;
+    arrows=+50;
     fighterArray=[];
     fighterLoc0=-400;
     for (var i=0; i<40; i++ ) {
@@ -127,14 +160,14 @@ function populateS3(){
 }}
 
 function populateS4(){
-    arrows+=50.5;
+    arrows+=50;
     fighterArray=[];
     fighterLoc0=-400;
     for (var i=0; i<40; i++ ) {
         fighterArray.push({file: mySprite, frame: totalFrame, zero: 0, frameW: frameWidth, frameH: frameHeight, locationX: fighterLoc0-=50, locationY: fighterYloc, frameW2: frameWidth, frameH2: frameHeight, life: true, speed: speed });
 }
     for (var j=0; j<10; j++ ) {
-        ufoArray.push({file: ufo, locationX: ufoX -= 200,locationY: ufoY, life: true, speed: ufoSpeed });
+        ufoArray.push({file: ufo, locationX: ufoX -= 200,locationY: ufoY, life: true, speed: ufoSpeed, hp:10 });
 }  
 }
  
@@ -165,8 +198,13 @@ if(arrowY<1080 && arrowArray[i].y <1080)  {
 
  //renders all graphic content
  function render() {
-     if(pause==false){
- gc.drawImage(background,0,0); 
+ 
+ gc.drawImage(pauseSwitch, 1700, 50); 
+ 
+ if(pause==false){          
+ gc.drawImage(background,0,0);
+ gc.drawImage(pauseSwitch, 1700, 50); 
+ gc.drawImage(exit, 30, 55); 
  gc.drawImage(castle,800,castleY);
  gc.font="50px Georgia";
  gc.fillText("Castle durability: " + castleLife,950,50);
@@ -195,7 +233,7 @@ function(isConfirm){
   if (isConfirm) { location.reload();
     
   } else {
-    location.reload();
+     window.location.href = "index.html";
   }
 }); 
 }
@@ -211,7 +249,7 @@ function(isConfirm){
  }   
          
  for(var i=0; i<ufoArray.length;i++){
-     if(ufoArray[i].life==false && deathCheck1<ufoArray.length){
+     if(ufoArray[i].hp<=0 && deathCheck1<ufoArray.length){
          deathCheck1++;
      }
      else{
@@ -234,7 +272,7 @@ if(fighterArray[i].locationX<=1000 && fighterArray[i].life==true){
 }
 if(fighterArray[i].locationX>=1000 && fighterArray[i].life==true){    
    castleLife-=2;
-   navigator.vibrate(500);
+   navigator.vibrate(200);
 }
 }
 
@@ -283,6 +321,7 @@ if(fighterArray[i].locationX<=1000 && fighterArray[i].life==true){
 }
 if(fighterArray[i].locationX>=1000 && fighterArray[i].life==true){    
    castleLife-=2;
+   navigator.vibrate(200);
 }
 }
       
@@ -294,7 +333,6 @@ for (var j=0; j<fighterArray.length; j++ ){
      arrow.height + arrowArray[i].y > fighterArray[j].locationY) {
      fighterArray[j].life=false;
      deathCount=deathCount+1;
-       console.log("collision");
     } 
 }
 }     
@@ -330,6 +368,7 @@ if(fighterArray[i].locationX<=1000 && fighterArray[i].life==true){
 }
 if(fighterArray[i].locationX>=1000 && fighterArray[i].life==true){    
    castleLife-=2;
+   navigator.vibrate(200);
 }
 }
       
@@ -376,12 +415,13 @@ if(fighterArray[i].locationX<=1000 && fighterArray[i].life==true){
 }
 if(fighterArray[i].locationX>=1000 && fighterArray[i].life==true){    
    castleLife-=2;
+   navigator.vibrate(200);
 }   
 }
               
               
           for (var j=0; j<ufoArray.length; j++ ) {
-        if(ufoArray[j].life==true){
+        if(ufoArray[j].hp>=0){
         drawUfo(ufoArray[j]);
         }
               
@@ -394,8 +434,9 @@ if(ufoArray[j].locationX<=1000 && ufoArray[j].life==true){
        ufoArray[j].locationY--;
    }
 }
-if(ufoArray[j].locationX>=1000 && ufoArray[j].life==true){    
+if(ufoArray[j].locationX>=1000 && ufoArray[j].hp>=0){    
    castleLife-=2;
+   navigator.vibrate(200);
 }
 }
  
@@ -420,7 +461,7 @@ for (var j=0; j<ufoArray.length; j++ ){
     arrowArray[i].x +arrow.width > ufoArray[j].locationX &&
      arrowArray[i].y < ufoArray[j].locationY+ufoHeight &&
      arrow.height + arrowArray[i].y > ufoArray[j].locationY) {
-     ufoArray[j].life=false;
+     ufoArray[j].hp-=3;
      deathCount=deathCount+1;
     } 
 }
@@ -442,10 +483,10 @@ for (var j=0; j<ufoArray.length; j++ ){
   closeOnCancel: false  
 },
 function(isConfirm){
-  if (isConfirm) { location.reload();
+  if (isConfirm) {window.location.href = "index.html";
     
   } else {
-    location.reload();
+   window.location.href = "index.html";
   }});        
  }
  }
