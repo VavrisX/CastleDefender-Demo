@@ -23,7 +23,7 @@ background-color: black;
     
 }
 #CastleDefender{
-    color:white; font-size: 90px;
+    color:white; font-size: 140px;
     font-family: 'Skranji', cursive;
 }
 
@@ -35,9 +35,10 @@ background-color: black;
 }
 
 #nav li  {
+    font-size: 90px;
     display: block;
-    width: 30%;
-    padding: 20px;
+    width: 40%;
+    padding: 50px;
     color: #fff;
     border: 1px solid #fff;
     border-radius: 5px;
