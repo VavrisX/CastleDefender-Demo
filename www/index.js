@@ -3,32 +3,34 @@ var frameHeight = 61;
 var tFrame = 14; // total frames
 var cFrame = 0; // the current frame it is on
 var mySprite; // name of my image holder
-var pause = false;
-var fighterArray = [];
-var arrowArray = [];
-var ufoArray = [];
+var pause = false; // boolean to know what state the game is in
+var fighterArray = []; // array that holds all fighters
+var arrowArray = []; // array that holds all arrows
+var ufoArray = []; // array that holds all ufos
 var speed=Math.floor((Math.random()*6)+2); //speed of the units, different each playthrough
 
 var gc;
 var canvas;
 var totalFrame;
-var deathCheck;
-var deathCheck1;
-var pauseSwitch;
+var deathCheck;  // var that holds data of fighter deaths
+var deathCheck1;  // var that holds data of ufo deaths
+var pauseSwitch;  // holds info of play/pause buttons
+var checkXpos;   // hold X position of screen touch
+var checkYpos;    // hold Y position of screen touch
 
-//stage 1 variables
-var fighterYloc= 1016;
+
+var fighterYloc= 1016;  // Y loc of fighters
 var fighterLoc0=-400;  //initial Xloc of fighters
 
-var ufoX= -600;
+var ufoX= -600;   
 var ufoY= 650;
 var ufoSpeed = 4;
 var ufoHeight = 106;
 var ufoWidth = 150;
 
-var stage2alert=true;
-var stage3alert=false;
-var stage4alert=false;
+var stage2alert=true;    // booleans to hold info of what stage the game is in
+var stage3alert=false;  //
+var stage4alert=false; //
 var arrows;
 //other variables
 var castleLife=1000;
@@ -48,13 +50,11 @@ var castleY=675;
  canvas = document.getElementById("myCanvas");
  gc = canvas.getContext("2d");
 //Event listeners
- document.addEventListener("click",mouseClickHandler,false);
- document.addEventListener("keydown", keyDownHandler, false);  
- document.addEventListener("click",pause2,false); 
- document.addEventListener("keyup", keyUpHandler, false);    
+ document.addEventListener("click",mouseClickHandler,false); 
+ document.addEventListener("click",pause2,false);  
  window.setInterval(render,35);
  window.setInterval(arrowDownRender,16);
-  
+
  //Loading images
  background=document.getElementById("background");    
  castle = document.getElementById("castle");
@@ -66,7 +66,7 @@ var castleY=675;
  playI = document.getElementById("play");
  exit = document.getElementById("exit");
  swal({   //Sweet alert JS library
-  title: "Welcome to Castle Fight Defense!",
+  title: "Welcome to CastleDefender!",
   text: ("Tap the screen to shoot enemies with arrows!"),
   type: "info",
   showCancelButton: false,
@@ -79,55 +79,38 @@ function(isConfirm){
   populateS1();
 });    
  }
- //Event handlers
- function keyDownHandler(e) {      //function that stops the game upon pressing space     
- if (e.keyCode == 32 && pauseCheck>0) {
- pause = true;
- pauseCheck=pauseCheck*-1;    //Using *-1 to get the double negative into positive and vice versa
- }
- else if(e.keyCode == 32 && pauseCheck<0) {
- pause = false;
- pauseCheck=pauseCheck*-1;    
- }
-}
-
+ 
 function pause2(event){
 
     event.preventDefault();
-    var checkXpos = event.clientX;
-    var checkYpos = event.clientY;
+    checkXpos = event.clientX;
+    checkYpos = event.clientY;
 
-    if(checkXpos>1700 && checkXpos<1870 && checkYpos>50 && checkYpos<220){ //780 = 580+(200) <- image width 1700, 50
+    if(checkXpos>1700 && checkXpos<1870 && checkYpos>50 && checkYpos<220){ // if player click this canvas area then pause
            if (pauseCheck>0) {
             pause = true;
             pauseCheck=pauseCheck*-1;
             pauseSwitch = playI;
-            arrows+=1;
+            
         //Using *-1 to get the double negative into positive and vice versa
             }
             else if(pauseCheck<0) {
             pause = false;
             pauseCheck=pauseCheck*-1;
             pauseSwitch = pauseI;
-            arrows+=1;
+            
  }
 }
     if(checkXpos>30 && checkXpos<200 && checkYpos>55 && checkYpos<155){
-        window.location.href = "index.html";
+        window.location.href = "index.html";  // if player clicks exit, load index.html
         
 }    
 }
 
-
-
-function keyUpHandler(e) {
- if(e.keyCode == 78) {
- location.reload();
- }
-}
-
-  function mouseClickHandler(event){
+  function mouseClickHandler(event){  // on touch, shoot arrow
+      if(pause==false){    
         if(event.target.tagName.localeCompare("canvas") && event.button==0){
+            if(checkXpos<1700 || checkXpos>1870 && checkYpos<50 || checkYpos>220){
             if(arrows !== 0){
            arrowCount=arrowCount+1;
            arrowX=event.clientX;
@@ -136,14 +119,17 @@ function keyUpHandler(e) {
            arrows=arrows-1;
         }   
   }  
+        }
   }
-function populateS1(){
-    arrows=10;
+  }
+
+function populateS1(){   // fires on game start, populates fighter array with enemies
+    arrows=15;
     for (var i=0; i<5; i++ ) {
         fighterArray.push({file: mySprite, frame: totalFrame, zero: 0, frameW: frameWidth, frameH: frameHeight, locationX: fighterLoc0-=50, locationY: fighterYloc, frameW2: frameWidth, frameH2: frameHeight, life: true, speed: speed });
 }}
 
-function populateS2(){
+function populateS2(){  // fires on stage 1 completion, resets the array then repopulates it
     arrows+=35;
     fighterArray=[];
     fighterLoc0=-400;
@@ -151,7 +137,7 @@ function populateS2(){
         fighterArray.push({file: mySprite, frame: totalFrame, zero: 0, frameW: frameWidth, frameH: frameHeight, locationX: fighterLoc0-=50, locationY: fighterYloc, frameW2: frameWidth, frameH2: frameHeight, life: true, speed: speed });
 }}
 
-function populateS3(){
+function populateS3(){  // fires on stage 2 completion, resets the array then repopulates it
     arrows=+50;
     fighterArray=[];
     fighterLoc0=-400;
@@ -159,27 +145,27 @@ function populateS3(){
         fighterArray.push({file: mySprite, frame: totalFrame, zero: 0, frameW: frameWidth, frameH: frameHeight, locationX: fighterLoc0-=50, locationY: fighterYloc, frameW2: frameWidth, frameH2: frameHeight, life: true, speed: speed });
 }}
 
-function populateS4(){
-    arrows+=50;
-    fighterArray=[];
+function populateS4(){ // fires on stage 3 completion, resets the array then repopulates it
+    arrows+=50; // add arrows to player
+    fighterArray=[];  // reset array
     fighterLoc0=-400;
     for (var i=0; i<40; i++ ) {
         fighterArray.push({file: mySprite, frame: totalFrame, zero: 0, frameW: frameWidth, frameH: frameHeight, locationX: fighterLoc0-=50, locationY: fighterYloc, frameW2: frameWidth, frameH2: frameHeight, life: true, speed: speed });
 }
-    for (var j=0; j<10; j++ ) {
+    for (var j=0; j<10; j++ ) {   // stage 4 has ufos in it, populate ufo array
         ufoArray.push({file: ufo, locationX: ufoX -= 200,locationY: ufoY, life: true, speed: ufoSpeed, hp:10 });
 }  
 }
  
-function drawArrow(arrows) {
+function drawArrow(arrows) {   // constructor of arrows
   gc.drawImage(arrows.file, arrows.x, arrows.y);
 }
 
-function drawFighter(fighters) {
+function drawFighter(fighters) {  // constructor of fighters
     gc.drawImage(fighters.file,cFrame*frameWidth,fighters.zero,fighters.frameW, fighters.frameH,fighters.locationX,fighters.locationY,fighters.frameW2,fighters.frameH2);
 }
 
-function drawUfo(ufos) {
+function drawUfo(ufos) {  // constructor of ufos
   gc.drawImage(ufos.file, ufos.locationX, ufos.locationY);
 }
 
@@ -188,20 +174,16 @@ function drawUfo(ufos) {
     for (var i=0; i<arrowArray.length; i++ ) {
         drawArrow(arrowArray[i]);
        
-        //console.log(arrowArray[i].x, arrowArray[i].y);
-if(pause==false){  
+  
 if(arrowY<1080 && arrowArray[i].y <1080)  {
     arrowArray[i].y+=32;
 }       
-}}
-}}
+}
+}
+}
 
- //renders all graphic content
- function render() {
- 
- gc.drawImage(pauseSwitch, 1700, 50); 
- 
- if(pause==false){          
+ //renders all graphic content /////////////////////////////////////////////////////////////////////////////////////////////////
+ function render() {     
  gc.drawImage(background,0,0);
  gc.drawImage(pauseSwitch, 1700, 50); 
  gc.drawImage(exit, 30, 55); 
@@ -239,7 +221,7 @@ function(isConfirm){
 }
 }   
          
- for(var i=0; i<fighterArray.length;i++){
+ for(var i=0; i<fighterArray.length;i++){  // checks if every fighter is dead
      if(fighterArray[i].life==false && deathCheck<fighterArray.length){
          deathCheck++;
      }
@@ -248,7 +230,7 @@ function(isConfirm){
      }
  }   
          
- for(var i=0; i<ufoArray.length;i++){
+ for(var i=0; i<ufoArray.length;i++){   // checks if every ufo is dead
      if(ufoArray[i].hp<=0 && deathCheck1<ufoArray.length){
          deathCheck1++;
      }
@@ -256,41 +238,41 @@ function(isConfirm){
          deathCheck1=0;
      }
  } 
-         
+            
  cFrame=(cFrame+1)%tFrame; //loops the frames of the fighters
-//STAGE 1  //////////////////////////////////////////////////////////////////// 
+//STAGE 1  //////////////////////////////////////////////////////////////////// ///////////////////////////////////////////////////
 if(stage1==true){
                         
-    for (var i=0; i<fighterArray.length; i++ ) {
+    for (var i=0; i<fighterArray.length; i++ ) {  // loop through the fighter array and draw all fighters
         if(fighterArray[i].life==true){
-        drawFighter(fighterArray[i]);
+        drawFighter(fighterArray[i]);  // using constructor
         }
-        //console.log(arrowArray[i].x, arrowArray[i].y);
- 
+        
+if(pause==false){     //make fighter move
 if(fighterArray[i].locationX<=1000 && fighterArray[i].life==true){
    fighterArray[i].locationX+=fighterArray[i].speed;
 }
 if(fighterArray[i].locationX>=1000 && fighterArray[i].life==true){    
    castleLife-=2;
-   navigator.vibrate(200);
+   navigator.vibrate(200);  // PhoneGap plugin
+}
 }
 }
 
-for (var i=0; i<arrowArray.length; i++ ) {
+for (var i=0; i<arrowArray.length; i++ ) {  // if arrow colides with fighter then kill fighter
 for (var j=0; j<fighterArray.length; j++ ){
-      if (arrowArray[i].x < fighterArray[j].locationX + frameWidth && // COLISION0
+      if (arrowArray[i].x < fighterArray[j].locationX + frameWidth &&
     arrowArray[i].x +arrow.width > fighterArray[j].locationX &&
      arrowArray[i].y < fighterArray[j].locationY+frameHeight &&
      arrow.height + arrowArray[i].y > fighterArray[j].locationY) {
      fighterArray[j].life=false;
      deathCount=deathCount+1;
-       console.log("collision");
     } 
 }
 }    
 }
      
-  //STAGE 2   
+  //STAGE 2   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   if(deathCheck==fighterArray.length && stage2alert==true && stage3alert==false && castleY==675){ swal({
   title: "Stage 1 completed!",
   text: "Get ready for stage 2!",
@@ -305,7 +287,7 @@ function(isConfirm){
   stage2alert=false;
   stage1=false;
   stage3alert=true;
-  populateS2(); 
+  populateS2(); // populate array after stage 1 completed
 });}   
   
   if(stage2==true){
@@ -314,8 +296,7 @@ function(isConfirm){
         if(fighterArray[i].life==true){
         drawFighter(fighterArray[i]);
         }
-        //console.log(arrowArray[i].x, arrowArray[i].y);
- 
+if(pause==false){     
 if(fighterArray[i].locationX<=1000 && fighterArray[i].life==true){
    fighterArray[i].locationX+=fighterArray[i].speed + (0.2*fighterArray[i].speed);
 }
@@ -324,10 +305,11 @@ if(fighterArray[i].locationX>=1000 && fighterArray[i].life==true){
    navigator.vibrate(200);
 }
 }
+}
       
 for (var i=0; i<arrowArray.length; i++ ) {
 for (var j=0; j<fighterArray.length; j++ ){
-      if (arrowArray[i].x < fighterArray[j].locationX + frameWidth && // COLISION0
+      if (arrowArray[i].x < fighterArray[j].locationX + frameWidth &&
     arrowArray[i].x +arrow.width > fighterArray[j].locationX &&
      arrowArray[i].y < fighterArray[j].locationY+frameHeight &&
      arrow.height + arrowArray[i].y > fighterArray[j].locationY) {
@@ -337,7 +319,7 @@ for (var j=0; j<fighterArray.length; j++ ){
 }
 }     
 }
-    //STAGE 3   
+    //STAGE 3   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   if(deathCheck==fighterArray.length && stage3alert==true && stage2alert==false && castleY==675){ swal({
   title: "Stage 2 completed!",
   text: "Get ready for stage 3! More incoming!",
@@ -361,8 +343,7 @@ if(stage3==true){
         if(fighterArray[i].life==true){
         drawFighter(fighterArray[i]);
         }
-        //console.log(arrowArray[i].x, arrowArray[i].y);
- 
+if(pause==false){     
 if(fighterArray[i].locationX<=1000 && fighterArray[i].life==true){
    fighterArray[i].locationX+=fighterArray[i].speed + (0.2*fighterArray[i].speed);
 }
@@ -371,10 +352,11 @@ if(fighterArray[i].locationX>=1000 && fighterArray[i].life==true){
    navigator.vibrate(200);
 }
 }
+}
       
 for (var i=0; i<arrowArray.length; i++ ) {
 for (var j=0; j<fighterArray.length; j++ ){
-      if (arrowArray[i].x < fighterArray[j].locationX + frameWidth && // COLISION0
+      if (arrowArray[i].x < fighterArray[j].locationX + frameWidth &&
     arrowArray[i].x +arrow.width > fighterArray[j].locationX &&
      arrowArray[i].y < fighterArray[j].locationY+frameHeight &&
      arrow.height + arrowArray[i].y > fighterArray[j].locationY) {
@@ -387,7 +369,7 @@ for (var j=0; j<fighterArray.length; j++ ){
 }
          
          
-  //STAGE 4  
+  //STAGE 4 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   if(deathCheck==fighterArray.length && stage4alert==true && stage3alert==false && castleY==675){ swal({
   title: "Stage 3 completed!",
   text: "Oh no, Aliens are coming! Protect the castle Hero!",
@@ -410,6 +392,7 @@ if(stage4==true){
         if(fighterArray[i].life==true){
         drawFighter(fighterArray[i]);
         }
+if(pause==false){    
 if(fighterArray[i].locationX<=1000 && fighterArray[i].life==true){
    fighterArray[i].locationX+=fighterArray[i].speed + (0.2*fighterArray[i].speed);
 }
@@ -418,13 +401,13 @@ if(fighterArray[i].locationX>=1000 && fighterArray[i].life==true){
    navigator.vibrate(200);
 }   
 }
+}
               
-              
-          for (var j=0; j<ufoArray.length; j++ ) {
+          for (var j=0; j<ufoArray.length; j++ ) {  // new enemy, ufos, draw ufos
         if(ufoArray[j].hp>=0){
-        drawUfo(ufoArray[j]);
+        drawUfo(ufoArray[j]); // using constructor to draw ufos
         }
-              
+if(pause==false){                  
 if(ufoArray[j].locationX<=1000 && ufoArray[j].life==true){
    ufoArray[j].locationX+=ufoArray[j].speed;
    if(ufoArray[j].locationY==650){
@@ -439,11 +422,9 @@ if(ufoArray[j].locationX>=1000 && ufoArray[j].hp>=0){
    navigator.vibrate(200);
 }
 }
- 
-
-
-      
-for (var i=0; i<arrowArray.length; i++ ) {
+}
+    
+for (var i=0; i<arrowArray.length; i++ ) { // collision : arrow with fighter
 for (var j=0; j<fighterArray.length; j++ ){
       if (arrowArray[i].x < fighterArray[j].locationX + frameWidth &&
     arrowArray[i].x +arrow.width > fighterArray[j].locationX &&
@@ -455,7 +436,7 @@ for (var j=0; j<fighterArray.length; j++ ){
 }
 }
     
-for (var i=0; i<arrowArray.length; i++ ) {
+for (var i=0; i<arrowArray.length; i++ ) { // collision : arrow with ufo
 for (var j=0; j<ufoArray.length; j++ ){
       if (arrowArray[i].x < ufoArray[j].locationX + ufoWidth && 
     arrowArray[i].x +arrow.width > ufoArray[j].locationX &&
@@ -468,7 +449,7 @@ for (var j=0; j<ufoArray.length; j++ ){
 }
 }
          
-         //checks if each fighter in stage 3 died, if so sweet alert pops up
+//Game Won!         //checks if each fighter in stage 3 died, if so sweet alert pops up
      if(deathCheck+deathCheck1==fighterArray.length+ufoArray.length && stage4alert==false && stage3alert==false && castleY==675){ 
          swal({
   title: "YOU WON THE GAME!",
@@ -488,6 +469,5 @@ function(isConfirm){
   } else {
    window.location.href = "index.html";
   }});        
- }
  }
  }
