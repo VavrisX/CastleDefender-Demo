@@ -170,7 +170,7 @@ function drawUfo(ufos) {  // constructor of ufos
 }
 
  function arrowDownRender(){
-  if(pause==false){                                  //this function renders the arrow, little faster then render function
+  if(pause==false){                                  //this function renders the arrow, little faster then render function that renders other graphics
     for (var i=0; i<arrowArray.length; i++ ) {
         drawArrow(arrowArray[i]);
        
