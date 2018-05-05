@@ -65,6 +65,7 @@ var castleY=675;
  pauseSwitch = pauseI;
  playI = document.getElementById("play");
  exit = document.getElementById("exit");
+     
  swal({   //Sweet alert JS library
   title: "Welcome to CastleDefender!",
   text: ("Tap the screen to shoot enemies with arrows!"),
@@ -83,8 +84,8 @@ function(isConfirm){
 function pause2(event){
 
     event.preventDefault();
-    checkXpos = event.clientX;
-    checkYpos = event.clientY;
+    checkXpos = event.clientX; // var that holds info of what are the player touched
+    checkYpos = event.clientY; //
 
     if(checkXpos>1700 && checkXpos<1870 && checkYpos>50 && checkYpos<220){ // if player click this canvas area then pause
            if (pauseCheck>0) {
@@ -170,7 +171,7 @@ function drawUfo(ufos) {  // constructor of ufos
 }
 
  function arrowDownRender(){
-  if(pause==false){                                  //this function renders the arrow, little faster then render function that renders other graphics
+  if(pause==false){                                  //this function renders the arrow, little faster then render function which renders other graphics
     for (var i=0; i<arrowArray.length; i++ ) {
         drawArrow(arrowArray[i]);
        
@@ -184,15 +185,15 @@ if(arrowY<1080 && arrowArray[i].y <1080)  {
 
  //renders all graphic content /////////////////////////////////////////////////////////////////////////////////////////////////
  function render() {     
- gc.drawImage(background,0,0);
- gc.drawImage(pauseSwitch, 1700, 50); 
- gc.drawImage(exit, 30, 55); 
- gc.drawImage(castle,800,castleY);
+ gc.drawImage(background,0,0);  // draw background
+ gc.drawImage(pauseSwitch, 1700, 50);  // draw pause button, the var pauseSwitch changes depending on waht state the game is in(pause/play)
+ gc.drawImage(exit, 30, 55); // draw exit button
+ gc.drawImage(castle,800,castleY); // draw casstle
  gc.font="50px Georgia";
- gc.fillText("Castle durability: " + castleLife,950,50);
- gc.fillText("Score: " + deathCount,950,100);
- gc.fillText("Arrows left: " + arrows,950,150);
-  gc.drawImage(arrow, arrowX, arrowY);
+ gc.fillText("Castle durability: " + castleLife,950,50); // draw UI
+ gc.fillText("Score: " + deathCount,950,100);  // UI
+ gc.fillText("Arrows left: " + arrows,950,150); // UI
+  gc.drawImage(arrow, arrowX, arrowY);  
      
  if(castleLife<=0){   //if the castle is destoyed, player loses the game
      castleY=castleY+=5;
@@ -212,10 +213,10 @@ if(arrowY<1080 && arrowArray[i].y <1080)  {
   closeOnCancel: false  
 },
 function(isConfirm){
-  if (isConfirm) { location.reload();
+  if (isConfirm) { location.reload();  // reload game
     
   } else {
-     window.location.href = "index.html";
+     window.location.href = "index.html";  // go back to menu
   }
 }); 
 }
@@ -273,7 +274,7 @@ for (var j=0; j<fighterArray.length; j++ ){
 }
      
   //STAGE 2   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  if(deathCheck==fighterArray.length && stage2alert==true && stage3alert==false && castleY==675){ swal({
+  if(deathCheck==fighterArray.length && stage2alert==true && stage3alert==false && castleY==675){ swal({  //SweetAlert JS library
   title: "Stage 1 completed!",
   text: "Get ready for stage 2!",
   type: "success",
@@ -296,18 +297,18 @@ function(isConfirm){
         if(fighterArray[i].life==true){
         drawFighter(fighterArray[i]);
         }
-if(pause==false){     
+if(pause==false){      // Change X location of fighters, makes them walk
 if(fighterArray[i].locationX<=1000 && fighterArray[i].life==true){
    fighterArray[i].locationX+=fighterArray[i].speed + (0.2*fighterArray[i].speed);
 }
 if(fighterArray[i].locationX>=1000 && fighterArray[i].life==true){    
    castleLife-=2;
-   navigator.vibrate(200);
+   navigator.vibrate(200); // PhoneGap plugin
 }
 }
 }
       
-for (var i=0; i<arrowArray.length; i++ ) {
+for (var i=0; i<arrowArray.length; i++ ) {  // IF any arrow colides with any fighter, kill fighter
 for (var j=0; j<fighterArray.length; j++ ){
       if (arrowArray[i].x < fighterArray[j].locationX + frameWidth &&
     arrowArray[i].x +arrow.width > fighterArray[j].locationX &&
@@ -320,7 +321,7 @@ for (var j=0; j<fighterArray.length; j++ ){
 }     
 }
     //STAGE 3   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  if(deathCheck==fighterArray.length && stage3alert==true && stage2alert==false && castleY==675){ swal({
+  if(deathCheck==fighterArray.length && stage3alert==true && stage2alert==false && castleY==675){ swal({ //SweetAlert JS library
   title: "Stage 2 completed!",
   text: "Get ready for stage 3! More incoming!",
   type: "success",
@@ -343,18 +344,18 @@ if(stage3==true){
         if(fighterArray[i].life==true){
         drawFighter(fighterArray[i]);
         }
-if(pause==false){     
+if(pause==false){      // Change X location of fighters, makes them walk
 if(fighterArray[i].locationX<=1000 && fighterArray[i].life==true){
    fighterArray[i].locationX+=fighterArray[i].speed + (0.2*fighterArray[i].speed);
 }
 if(fighterArray[i].locationX>=1000 && fighterArray[i].life==true){    
    castleLife-=2;
-   navigator.vibrate(200);
+   navigator.vibrate(200); // PhoneGap plugin
 }
 }
 }
       
-for (var i=0; i<arrowArray.length; i++ ) {
+for (var i=0; i<arrowArray.length; i++ ) { // IF any arrow colides with any fighter, kill fighter
 for (var j=0; j<fighterArray.length; j++ ){
       if (arrowArray[i].x < fighterArray[j].locationX + frameWidth &&
     arrowArray[i].x +arrow.width > fighterArray[j].locationX &&
@@ -370,7 +371,7 @@ for (var j=0; j<fighterArray.length; j++ ){
          
          
   //STAGE 4 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  if(deathCheck==fighterArray.length && stage4alert==true && stage3alert==false && castleY==675){ swal({
+  if(deathCheck==fighterArray.length && stage4alert==true && stage3alert==false && castleY==675){ swal({ //SweetAlert JS library
   title: "Stage 3 completed!",
   text: "Oh no, Aliens are coming! Protect the castle Hero!",
   type: "success",
@@ -392,13 +393,13 @@ if(stage4==true){
         if(fighterArray[i].life==true){
         drawFighter(fighterArray[i]);
         }
-if(pause==false){    
+if(pause==false){     // Change X location of fighters, makes them walk
 if(fighterArray[i].locationX<=1000 && fighterArray[i].life==true){
    fighterArray[i].locationX+=fighterArray[i].speed + (0.2*fighterArray[i].speed);
 }
 if(fighterArray[i].locationX>=1000 && fighterArray[i].life==true){    
    castleLife-=2;
-   navigator.vibrate(200);
+   navigator.vibrate(200); // PhoneGap plugin
 }   
 }
 }
@@ -407,7 +408,7 @@ if(fighterArray[i].locationX>=1000 && fighterArray[i].life==true){
         if(ufoArray[j].hp>=0){
         drawUfo(ufoArray[j]); // using constructor to draw ufos
         }
-if(pause==false){                  
+if(pause==false){              // Change X location of ufos, makes them fly     
 if(ufoArray[j].locationX<=1000 && ufoArray[j].life==true){
    ufoArray[j].locationX+=ufoArray[j].speed;
    if(ufoArray[j].locationY==650){
@@ -419,7 +420,7 @@ if(ufoArray[j].locationX<=1000 && ufoArray[j].life==true){
 }
 if(ufoArray[j].locationX>=1000 && ufoArray[j].hp>=0){    
    castleLife-=2;
-   navigator.vibrate(200);
+   navigator.vibrate(200); // PhoneGap plugin
 }
 }
 }
@@ -450,8 +451,8 @@ for (var j=0; j<ufoArray.length; j++ ){
 }
          
 //Game Won!         //checks if each fighter in stage 3 died, if so sweet alert pops up
-     if(deathCheck+deathCheck1==fighterArray.length+ufoArray.length && stage4alert==false && stage3alert==false && castleY==675){ 
-         swal({
+     if(deathCheck+deathCheck1==fighterArray.length+ufoArray.length && stage4alert==false && stage3alert==false && castleY==675){  
+         swal({ //SweetAlert JS library
   title: "YOU WON THE GAME!",
   text: "You are the ultimate Defender!",
   type: "success",
