@@ -186,9 +186,9 @@ if(arrowY<1080 && arrowArray[i].y <1080)  {
  //renders all graphic content /////////////////////////////////////////////////////////////////////////////////////////////////
  function render() {     
  gc.drawImage(background,0,0);  // draw background
- gc.drawImage(pauseSwitch, 1700, 50);  // draw pause button, the var pauseSwitch changes depending on waht state the game is in(pause/play)
+ gc.drawImage(pauseSwitch, 1700, 50);  // draw pause button, the var pauseSwitch changes depending on what state the game is in(pause/play)
  gc.drawImage(exit, 30, 55); // draw exit button
- gc.drawImage(castle,800,castleY); // draw casstle
+ gc.drawImage(castle,800,castleY); // draw castle
  gc.font="50px Georgia";
  gc.fillText("Castle durability: " + castleLife,950,50); // draw UI
  gc.fillText("Score: " + deathCount,950,100);  // UI
@@ -471,4 +471,9 @@ function(isConfirm){
    window.location.href = "index.html";
   }});        
  }
+     
  }
+    function exitApp(){
+        navigator.app.exitApp(); 
+        window.close();
+    }
